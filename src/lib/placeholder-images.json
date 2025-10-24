@@ -1,0 +1,28 @@
+{
+  "placeholderImages": [
+    {
+      "id": "shaliha-platform",
+      "description": "A booking platform for villas and apartments.",
+      "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3ZWIlMjBhcHB8ZW58MHx8fHwxNzYxMDgxMTY2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "web app"
+    },
+    {
+      "id": "crisper-restaurant",
+      "description": "A desktop restaurant management system.",
+      "imageUrl": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxkYXNoYm9hcmQlMjBkYXRhfGVufDB8fHx8MTc2MTAzNDE4MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dashboard data"
+    },
+    {
+      "id": "global-truck-logistics",
+      "description": "A logistics management system.",
+      "imageUrl": "https://images.unsplash.com/photo-1760331283477-8aa94182d251?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxsb2dpc3RpY3MlMjBuZXR3b3JrfGVufDB8fHx8MTc2MTA1NzA1MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logistics network"
+    },
+    {
+      "id": "community-cleanup",
+      "description": "A web platform for managing local waste issues.",
+      "imageUrl": "https://images.unsplash.com/photo-1725274016967-20c980247352?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb21tdW5pdHklMjBtYXB8ZW58MHx8fHwxNzYxMTM1Njc3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "community map"
+    }
+  ]
+}
