@@ -35,16 +35,7 @@ import a1 from "./1.jpg";
                     </footer>
                 </div>
 
-                <div className="relative w-full max-w-sm mx-auto">
-                    <Image
-                              src={a1}
-                        alt="Abdulaziz Qatmir"
-                        width={400}
-                        height={400}
-                        className="rounded-xl rotate-6 w-full h-full object-cover"
-                        data-ai-hint="man portrait"
-                    />
-                </div>
+              
             </div>
         </div>
       </div>

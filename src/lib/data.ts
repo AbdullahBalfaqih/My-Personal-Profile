@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail, Phone, Briefcase, Smartphone, Heart, Code, Data
 export const PERSONAL_INFO = {
   name: "Abdullah Balfaqih",
   title: "IT Specialist | Full Stack Engineer | Front-End & Back-End Developer",
-  location: "Seiyun, Yemen",
+    location: "Seiyun, Hadhramaut, Yemen",
   email: "abdullahbalfaqih0@gmail.com",
   phone: "+967776097665",
   whatsapp: "967776097665", // WhatsApp number without '+' or special characters

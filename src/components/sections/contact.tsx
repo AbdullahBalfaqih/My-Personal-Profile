@@ -115,7 +115,7 @@ const Contact = () => {
                 <Card className="p-8 bg-black w-full flex-1">
                     <CardContent className="p-0 h-full">
                         <div className="space-y-8 flex flex-col items-start justify-center h-full">
-                            <h5 className="text-xl font-bold">Company Info</h5>
+                            <h5 className="text-xl font-bold">Personal Info</h5>
                             <div className="space-y-6">
                                 <a href={`tel:${PERSONAL_INFO.phone}`} className="flex items-center gap-4 group">
                                 <div className="w-10 h-10 bg-card flex items-center justify-center rounded-lg">
