@@ -57,9 +57,7 @@ const Awards = () => {
               <div className="absolute left-0 top-0 h-full w-px bg-border"></div>
               <div className="flex-shrink-0 h-28 flex items-center justify-center -translate-y-1/4">
                 <h3 className="text-5xl font-bold text-muted-foreground transition-colors group-hover:text-accent transform -rotate-90 whitespace-nowrap">
-                  {cert.date.includes(" ")
-                    ? new Date(cert.date).getFullYear()
-                    : cert.date}
+                  {cert.date.includes(" ") ? new Date(cert.date).getFullYear() : cert.date}
                 </h3>
               </div>
               <div className="pl-8 flex-grow">
