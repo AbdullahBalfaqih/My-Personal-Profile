@@ -122,11 +122,13 @@ export const EDUCATION_TRAINING = {
     githubLink: "#",
   },
   certifications: [
-    { name: "Google Prompting Essentials", issuer: "Google", date: "2025", description: "Awarded for completing Google's essential training on AI prompt engineering." },
+    { name: "Urban Development Hackathon", issuer: "Al Khobar, Saudi Arabia", date: "2026", description: "2nd Place" },
+    { name: "Trust & Pay Hackathon", issuer: "Riyadh, Saudi Arabia", date: "2026", description: "Winner" },
+    { name: "Google Prompting Essentials", issuer: "Google", date: "2025", description: "Awarded for completing Google'''s essential training on AI prompt engineering." },
     { name: "IT Service Management & ITIL", issuer: "Alison", date: "2025", description: "Certified in ITIL Level 4, demonstrating expertise in IT service management frameworks." },
     { name: "Onex Pro ERP System (v7.5)", issuer: "Yemen Soft", date: "2025", description: "Recognized for proficiency in the Onex Pro ERP system for enterprise resource planning." },
     { name: "Search Engine Optimization", issuer: "Edraak", date: "2025", description: "Completed an in-depth course on SEO strategies and best practices." },
-    { name: "Various Professional Courses", issuer: "Exceed Institute, Sana'a", date: "2020", description: "Completed several professional development courses at Exceed Institute in Sana'a." },
+    { name: "Various Professional Courses", issuer: "Exceed Institute, Sana'a", date: "2020", description: "Completed several professional development courses at Exceed Institute in Sana'''a." },
     { name: "Project Management Fundamentals", issuer: "Various Institutes", date: "2017", description: "Acquired foundational knowledge in project management methodologies." },
   ],
 };
@@ -148,7 +150,30 @@ export const SKILLS = {
   ]
 };
 
+export const AWARDS = [
+  {
+    title: "Urban Development Hackathon",
+    location: "Al Khobar, Saudi Arabia",
+    award: "2nd Place",
+    year: "2026"
+  },
+  {
+    title: "Trust & Pay Hackathon",
+    location: "Riyadh, Saudi Arabia",
+    award: "Winner",
+    year: "2026"
+  }
+];
+
 export const PROJECTS = [
+    {
+      id: "batool-store",
+      name: "Batool Contact Lenses Store",
+      description: "Built a production-ready e-commerce platform with Next.js, React, and PostgreSQL, supporting bilingual users (Arabic/English). Developed responsive UI/UX with Framer Motion animations, improving user engagement and interaction, Integrated AI virtual try-on for contact lenses, optimized site performance, and deployed to production.",
+      technologies: ["Next.js", "React", "PostgreSQL", "Framer Motion"],
+      githubUrl: "#",
+      liveUrl: "https://www.batool.store/",
+    },
     {
       id: "shaliha-platform",
       name: "Shaliha Booking Platform",
@@ -187,6 +212,7 @@ export const NAV_LINKS = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
+  { href: "#awards", label: "Awards" },
   { href: "#services", label: "Services" },
   { href: "#portfolio", label: "Portfolio" },
   { href: "#blog", label: "Blog" },
@@ -261,5 +287,3 @@ export const SERVICES = [
       ]
   },
 ];
-
-    
