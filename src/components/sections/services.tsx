@@ -25,8 +25,6 @@ const Services = () => {
   return (
     <>
       <section id="services" className="py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-grid-white/[0.05] -z-10"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/10 rounded-full blur-3xl -z-10 opacity-50"></div>
         <div className="absolute top-0 left-0 w-[200px] h-[200px] -translate-x-1/4 -translate-y-1/4 opacity-100">
             <Image 
                 src="https://framerusercontent.com/images/2mOIYYfWmBs7Gew2SSMq8nYZTo.svg"

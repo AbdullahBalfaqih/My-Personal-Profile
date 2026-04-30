@@ -9,15 +9,18 @@ import SectionHeader from "../ui/section-header";
 import m1 from "./m1.png";
 import m2 from "./m2.png";
 import m3 from "./m3.png";
+import jisr from "./jisr.png";
+import eventix from "./eventix.png";
+import curio from "./curio.png";
+import ticket from "./ticket.png";
+
 const latestWorks = [
-
     {
-        title: "Personal Real Estate Management Platform",
-        category: "Mobile App (Flutter)",
-        date: "May 5, 2025",
-        imageSrc: m2,
-        href: "/project/real-estate-management",
-
+        title: "EVENTIX: The first hybrid solution in the region. Automatic authentication of every ticket on the Polygon network with NFT minting and authenticated trading options.",
+        category: "Blockchain",
+        date: "Mar 03, 2026",
+        imageSrc: eventix,
+        href: "https://www.eventix-chain.cloud/",
     },
     {
         title: "Database Design & Management with Supabase",
@@ -26,16 +29,13 @@ const latestWorks = [
         imageSrc: m1,
         href: "/project/database-management-supabase",
     },
-
-
     {
-        title: "Blood Donation Platform Development",
-        category: "Backend",
-        date: "May 06, 2025",
-        imageSrc: m3,
-        href: "/project/blood-donation-platform",
+        title: "A platform that connects ideas with funding, where insights are transformed into successful projects.",
+        category: "Fintech",
+        date: "Feb 10, 2026",
+        imageSrc: jisr,
+        href: "https://capable-lolly-f2a5ed.netlify.app/",
     },
-
 ];
 
 const Blog = () => {

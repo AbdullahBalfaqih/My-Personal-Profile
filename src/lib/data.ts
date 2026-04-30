@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Phone, Briefcase, Smartphone, Heart, Code, Database, Server, Component, PenTool, LayoutTemplate, BrainCircuit, Bot, GitBranch, Terminal, Twitter, MessageCircle } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, BriefcaseBusiness, Smartphone, Heart, Code, Database, Server, Component, PenTool, LayoutTemplate, BrainCircuit, Bot, GitBranch, Terminal, Twitter, MessageCircle, Globe, Wallet, ShieldCheck, MapPin, Trophy } from "lucide-react";
 
 export const PERSONAL_INFO = {
   name: "Abdullah Balfaqih",
@@ -13,6 +13,7 @@ export const PERSONAL_INFO = {
     { name: "Twitter", url: "https://x.com/aqih0", icon: Twitter },
     { name: "LinkedIn", url: "https://www.linkedin.com/in/abdullah-balfaqih-31b006303", icon: Linkedin },
     { name: "GitHub", url: "https://github.com/AbdullahBalfaqih", icon: Github },
+    { name: "Telegram", url: "https://t.me/aqih0", icon: MessageCircle },
     { name: "Email", url: "mailto:abdullahbalfaqih0@gmail.com", icon: Mail },
   ],
   summary: "As a detail-oriented IT graduate, I specialize in full-stack development, building scalable web and desktop applications with a focus on efficient and reliable solutions."
@@ -20,7 +21,7 @@ export const PERSONAL_INFO = {
 
 export const PROFESSIONAL_EXPERIENCE = [
   {
-    role: "Freelance Web Developer",
+    role: "Freelance Full Stack Developer",
     company: "Shaliha Platform",
     location: "Seiyun, Hadhramaut, Yemen",
     period: "Jul 2023 – Aug 2023",
@@ -30,7 +31,7 @@ export const PROFESSIONAL_EXPERIENCE = [
       "Ensured full mobile responsiveness and SEO-optimized structure, enhancing accessibility and search visibility.",
       "Delivered efficient and reliable solutions, reducing booking errors and saving operational time, while boosting client satisfaction.",
     ],
-    icon: Briefcase,
+    icon: Globe,
     url: "https://www.shaliha.website/"
   },
   {
@@ -44,11 +45,11 @@ export const PROFESSIONAL_EXPERIENCE = [
       "Developed and integrated an online ordering website with real-time RESTful APIs for order processing, payments, and reporting.",
       "Optimized operations, reducing losses, improving reliability, and boosting customer satisfaction.",
     ],
-    icon: Briefcase,
+    icon: BriefcaseBusiness,
     url: "https://www.crisper.food/"
   },
   {
-    role: "Freelance Web Developer",
+    role: "Freelance Full Stack Developer",
     company: "Global Truck Logistics",
     location: "Remote",
     period: "Sep 2023 – Oct 2023",
@@ -58,11 +59,11 @@ export const PROFESSIONAL_EXPERIENCE = [
       "Developed modules for parcel tracking, payroll, branch operations, and expense management, integrating real-time data to streamline processes.",
       "Enhanced coordination, delivery accuracy, and overall efficiency across multiple branches, reducing errors and improving service reliability.",
     ],
-    icon: Briefcase,
+    icon: Wallet,
     url: "#"
   },
   {
-    role: "Web Developer",
+    role: "Freelance Full Stack Developer",
     company: "Community Cleanup Platform",
     location: "Remote",
     period: "May 2023 – Jun 2023",
@@ -72,33 +73,31 @@ export const PROFESSIONAL_EXPERIENCE = [
       "Implemented features for task reporting, status tracking, and data visualization, enabling efficient monitoring and faster resolution of environmental issues.",
       "Contributed to community impact by streamlining waste reporting, increasing responsiveness, and promoting civic participation.",
     ],
-    icon: Briefcase,
+    icon: ShieldCheck,
     url: "https://cleanyourhood.homes/dashboard"
   },
   {
-    role: "Mobile App Developer",
-    company: "Aqary App",
+    role: "Full Stack Developer",
+    company: "EVENTIX API",
     location: "Remote",
-    period: "Mar 2023 - Apr 2023",
-    jobType: "Part Time",
+    period: "Mar 2024 - Present",
+    jobType: "Contract",
     description: [
-      "Developed a cross-platform mobile application for real estate listings and property management.",
-      "Implemented features for property search, filtering, and agent communication.",
+      "Integrate the Middle East's most secure ticketing protocols into your applications via our advanced software interfaces.",
     ],
-    icon: Smartphone,
-    url: "#"
+    icon: ShieldCheck,
+    url: "https://www.eventix-chain.cloud/"
   },
   {
-    role: "Web Developer",
-    company: "Nabdh Al-Hayat",
+    role: "8th Place Winner",
+    company: "Sports Innovation Hackathon",
     location: "Remote",
     period: "Jan 2023 - Feb 2023",
-    jobType: "Part Time",
+    jobType: "Hackathon",
     description: [
-      "Created a website for blood donations and campaign management.",
-      "Included features for donor registration, appointment scheduling, and campaign tracking.",
+      "Secured 8th place in the Sports Innovation Hackathon, focused on developing technology solutions for the sports industry.",
     ],
-    icon: Heart,
+    icon: Trophy,
     url: "#"
   },
 ];
@@ -199,12 +198,28 @@ export const PROJECTS = [
       liveUrl: null,
     },
     {
-      id: "community-cleanup",
-      name: "Community Cleanup Platform",
-      description: "A web platform for reporting and managing local waste issues, featuring task reporting, status tracking, and data visualization.",
-      technologies: ["React", "Node.js", "Firebase", "Leaflet.js"],
+      id: "curiogrid",
+      name: "CurioGrid",
+      description: "CurioGrid is a true Web3 application that leverages the power of the Solana blockchain to bring unprecedented transparency and authenticity to AI-generated content.",
+      technologies: ["Solana", "Rust", "Next.js", "AI Integration"],
       githubUrl: "#",
-      liveUrl: "#",
+      liveUrl: "https://curiogrid.site/",
+    },
+    {
+      id: "eventix-api",
+      name: "EVENTIX API",
+      description: "Integrate the Middle East's most secure ticketing protocols into your applications via our advanced software interfaces. Real-time authentication and blockchain-backed security.",
+      technologies: ["Blockchain", "Polygon", "Next.js", "API"],
+      githubUrl: "#",
+      liveUrl: "https://www.eventix-chain.cloud/",
+    },
+    {
+      id: "jisr-platform",
+      name: "Jisr Platform",
+      description: "A platform that connects ideas with funding, where insights are transformed into successful projects. Streamlining the path from innovation to investment.",
+      technologies: ["Next.js", "React", "Fintech", "Supabase"],
+      githubUrl: "#",
+      liveUrl: "https://capable-lolly-f2a5ed.netlify.app/",
     }
 ];
 
@@ -281,7 +296,7 @@ export const SERVICES = [
           { name: "MS SQL Server", icon: Database },
           { name: "PostgreSQL", icon: Database },
           { name: "Python", icon: Code },
-          { name: "Odoo ERP", icon: Briefcase },
+          { name: "Odoo ERP", icon: BriefcaseBusiness },
           { name: "Genkit/AI", icon: Bot },
           { name: "n8n", icon: GitBranch }
       ]

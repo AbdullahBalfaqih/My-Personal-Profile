@@ -19,11 +19,13 @@ const NAV_LINKS = [
 ];
 
 const Header = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const activeSection = useActiveSection(NAV_LINKS.map(l => l.href));
 
   useEffect(() => {
+    setIsMounted(true);
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 10);
     };
@@ -74,48 +76,55 @@ const Header = () => {
 
           {/* Mobile Navigation Trigger */}
           <div className="md:hidden">
-             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                 <Button variant="ghost" size="icon">
+             {isMounted ? (
+                <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                  <SheetTrigger asChild>
+                     <Button variant="ghost" size="icon">
+                      <Menu />
+                      <span className="sr-only">Open menu</span>
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="left" className="bg-black text-white border-r-0 p-0">
+                    <SheetHeader className="p-4 border-b border-white/10">
+                      <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
+                       <Link href="#home" onClick={handleLinkClick} className="flex items-center gap-2 text-2xl font-bold">
+                          <Logo />
+                           <span>Balfaqih</span>
+                      </Link>
+                    </SheetHeader>
+                    <div className="flex flex-col h-full">
+                        <nav className="flex-grow flex flex-col justify-center items-center gap-6">
+                            {NAV_LINKS.map((link) => (
+                                <SheetClose asChild key={link.href}>
+                                    <Link
+                                        href={link.href}
+                                        onClick={handleLinkClick}
+                                        className={cn(
+                                            "text-2xl font-medium text-muted-foreground hover:text-white transition-colors",
+                                            activeSection === link.href && "text-accent"
+                                        )}
+                                    >
+                                        {link.label}
+                                    </Link>
+                                </SheetClose>
+                            ))}
+                        </nav>
+                         <div className="p-4 border-t border-white/10">
+                             <Button asChild size="lg" className="w-full bg-accent text-accent-foreground">
+                                <Link href="#contact" onClick={handleLinkClick}>
+                                    CONTACT <ArrowRight className="ml-2"/>
+                                </Link>
+                            </Button>
+                        </div>
+                    </div>
+                  </SheetContent>
+                </Sheet>
+             ) : (
+                <Button variant="ghost" size="icon">
                   <Menu />
                   <span className="sr-only">Open menu</span>
                 </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="bg-black text-white border-r-0 p-0">
-                <SheetHeader className="p-4 border-b border-white/10">
-                  <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
-                   <Link href="#home" onClick={handleLinkClick} className="flex items-center gap-2 text-2xl font-bold">
-                      <Logo />
-                       <span>Balfaqih</span>
-                  </Link>
-                </SheetHeader>
-                <div className="flex flex-col h-full">
-                    <nav className="flex-grow flex flex-col justify-center items-center gap-6">
-                        {NAV_LINKS.map((link) => (
-                            <SheetClose asChild key={link.href}>
-                                <Link
-                                    href={link.href}
-                                    onClick={handleLinkClick}
-                                    className={cn(
-                                        "text-2xl font-medium text-muted-foreground hover:text-white transition-colors",
-                                        activeSection === link.href && "text-accent"
-                                    )}
-                                >
-                                    {link.label}
-                                </Link>
-                            </SheetClose>
-                        ))}
-                    </nav>
-                     <div className="p-4 border-t border-white/10">
-                         <Button asChild size="lg" className="w-full bg-accent text-accent-foreground">
-                            <Link href="#contact" onClick={handleLinkClick}>
-                                CONTACT <ArrowRight className="ml-2"/>
-                            </Link>
-                        </Button>
-                    </div>
-                </div>
-              </SheetContent>
-            </Sheet>
+             )}
           </div>
         </div>
       </div>

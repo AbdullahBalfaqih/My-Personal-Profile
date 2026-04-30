@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-16 md:py-24 bg-card/50">
+    <section id="skills" className="py-16 md:py-24 bg-black">
       <div className="container mx-auto px-4 animate-in fade-in slide-in-from-bottom-12 duration-500">
         <h2 className="text-3xl font-extrabold tracking-tight text-center sm:text-4xl mb-12">
           Skills & Expertise

@@ -36,7 +36,10 @@ const nextConfig: NextConfig = {
       }
     ],
   },
-  serverComponentsExternalPackages: ['genkit', '@genkit-ai/google-genai'],
+  // @ts-ignore
+  turbopack: {
+    root: '.',
+  },
 };
 
 export default nextConfig;

@@ -1,6 +1,6 @@
 import { EDUCATION_TRAINING } from "@/lib/data";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { GraduationCap, Award, Briefcase, Github } from "lucide-react";
+import { GraduationCap, Award, BriefcaseBusiness, Github } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
@@ -18,7 +18,7 @@ const Education = () => {
                 <Card>
                     <CardHeader>
                         <CardTitle className="flex items-start gap-3">
-                            <div className="mt-1"><GraduationCap className="h-5 w-5 text-accent"/></div>
+                            <div className="mt-1"><GraduationCap className="h-5 w-5 text-accent" strokeWidth={1.2} /></div>
                             <div>
                                 {degree.title}
                                 <CardDescription>{degree.institution}</CardDescription>
@@ -34,7 +34,7 @@ const Education = () => {
                  <Card>
                     <CardHeader>
                          <CardTitle className="flex items-start gap-3">
-                            <div className="mt-1"><Briefcase className="h-5 w-5 text-accent"/></div>
+                            <div className="mt-1"><BriefcaseBusiness className="h-5 w-5 text-accent" strokeWidth={1.2} /></div>
                              <div>
                                 {internship.role}
                                 <CardDescription>{internship.company}</CardDescription>
@@ -51,7 +51,7 @@ const Education = () => {
                          {internship.githubLink && (
                             <Button variant="link" asChild className="p-0 h-auto mt-2">
                                 <Link href={internship.githubLink} target="_blank">
-                                    <Github className="h-4 w-4 mr-2"/> GitHub Project
+                                    <Github className="h-4 w-4 mr-2" strokeWidth={1.2} /> GitHub Project
                                 </Link>
                             </Button>
                         )}
@@ -63,7 +63,7 @@ const Education = () => {
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-3">
-                        <Award className="h-5 w-5 text-accent"/>
+                        <Award className="h-5 w-5 text-accent" strokeWidth={1.2} />
                         Certifications
                     </CardTitle>
                 </CardHeader>

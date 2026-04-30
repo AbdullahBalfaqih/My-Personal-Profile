@@ -10,6 +10,9 @@ import { sendEmail } from "@/ai/flows/send-email-flow";
 import { PERSONAL_INFO } from "@/lib/data";
 import { useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 const Footer = () => {
     const [newsletterEmail, setNewsletterEmail] = useState("");
@@ -18,6 +21,8 @@ const Footer = () => {
 
     const lineRef = useRef(null);
     const isInView = useInView(lineRef, { once: true, amount: 0.5 });
+    
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -85,8 +90,13 @@ const Footer = () => {
     ];
 
     return (
-        <footer id="footer" className="bg-black pt-12 pb-12 overflow-hidden">
-            <div className="container mx-auto px-4">
+        <footer 
+            id="footer" 
+            ref={containerRef}
+            className="relative bg-black pt-12 pb-12 overflow-hidden h-screen flex flex-col justify-center"
+        >
+
+            <div className="container mx-auto px-4 relative z-10">
                 <div
                     ref={lineRef}
                     className={cn("footer-line mb-24", isInView && "is-in-view")}
@@ -98,14 +108,57 @@ const Footer = () => {
                         <p className="text-muted-foreground">
                             A dynamic and creative developer dedicated to transforming visions into captivating digital experiences.
                         </p>
-                        <div className="flex space-x-2">
-                            {PERSONAL_INFO.socials.map((social) => (
-                                <Link key={social.name} href={social.url} target="_blank" rel="noopener">
-                                    <Button variant="outline" size="icon" className="bg-card hover:bg-accent hover:text-accent-foreground">
-                                        <social.icon className="h-4 w-4" />
-                                    </Button>
-                                </Link>
-                            ))}
+                        <div className="action-wrap">
+                            {/* LinkedIn */}
+                            <Link className="action" href={PERSONAL_INFO.socials.find(s => s.name === "LinkedIn")?.url || "#"} target="_blank" rel="noopener">
+                                <svg className="action-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+                                    <path d="M8 11l0 5"></path>
+                                    <path d="M8 8l0 .01"></path>
+                                    <path d="M12 16l0 -5"></path>
+                                    <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
+                                </svg>
+                                <span className="action-content" data-content="linkedin"></span>
+                            </Link>
+
+                            {/* GitHub */}
+                            <Link className="action" href={PERSONAL_INFO.socials.find(s => s.name === "GitHub")?.url || "#"} target="_blank" rel="noopener">
+                                <svg className="action-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
+                                </svg>
+                                <span className="action-content" data-content="github"></span>
+                            </Link>
+
+                            {/* Twitter / X */}
+                            <Link className="action" href={PERSONAL_INFO.socials.find(s => s.name === "Twitter")?.url || "#"} target="_blank" rel="noopener">
+                                <svg className="action-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                                    <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                                </svg>
+                                <span className="action-content" data-content="twitter"></span>
+                            </Link>
+
+                            {/* Email */}
+                            <Link className="action" href={PERSONAL_INFO.socials.find(s => s.name === "Email")?.url || "mailto:abdullahbalfaqih0@gmail.com"} target="_blank" rel="noopener">
+                                <svg className="action-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path>
+                                    <path d="M3 7l9 6l9 -6"></path>
+                                </svg>
+                                <span className="action-content" data-content="email"></span>
+                            </Link>
+
+                            {/* Telegram */}
+                            <Link className="action" href={PERSONAL_INFO.socials.find(s => s.name === "Telegram")?.url || "https://t.me/aqih0"} target="_blank" rel="noopener">
+                                <svg className="action-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4"></path>
+                                </svg>
+                                <span className="action-content" data-content="telegram"></span>
+                            </Link>
                         </div>
                     </div>
 

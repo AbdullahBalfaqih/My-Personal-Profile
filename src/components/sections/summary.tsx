@@ -17,7 +17,7 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
 
 const Summary = () => {
     return (
-        <SectionContainer id="summary" className="bg-card/50">
+        <SectionContainer id="summary" className="bg-black">
             <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-12 duration-500">
                 <SectionTitle>About Me</SectionTitle>
                 <p className="text-lg text-muted-foreground leading-relaxed">

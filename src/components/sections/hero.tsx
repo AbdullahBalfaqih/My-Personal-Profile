@@ -1,19 +1,8 @@
 import React from "react";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
-
 const Hero = () => {
   return (
-    <section id="home" className="relative w-full h-[90svh] min-h-[700px] flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 -z-10 h-full w-full bg-background">
-        <Image
-          src="https://framerusercontent.com/images/m4dKAuxSoRsJwbzFiB73wjOWng.svg"
-          alt="Background Hero Image"
-          fill
-          className="opacity-20 object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background"></div>
-      </div>
+    <section id="home" className="relative w-full h-[90svh] min-h-[700px] flex items-center justify-center overflow-hidden bg-black">
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black pointer-events-none"></div>
       
       <div className="container px-4 text-center">
         <div className="relative max-w-5xl mx-auto flex flex-col items-center">

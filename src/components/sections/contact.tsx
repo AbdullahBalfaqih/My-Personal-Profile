@@ -10,6 +10,7 @@ import { Card, CardContent } from "../ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { sendEmail } from "@/ai/flows/send-email-flow";
 import SectionHeader from "../ui/section-header";
+import ThreePersonalInfoAnimation from "./three-personal-info-animation";
 
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -96,7 +97,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-background overflow-hidden">
+    <section id="contact" className="py-16 md:py-24 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-left mb-12">
@@ -111,9 +112,10 @@ const Contact = () => {
           {/* Contact Content */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Left: Contact Info */}
-            <div className="space-y-8 flex flex-col">
-                <Card className="p-8 bg-black w-full flex-1">
-                    <CardContent className="p-0 h-full">
+            <div className="space-y-8 flex flex-col relative">
+                <Card className="relative p-8 bg-black w-full flex-1 overflow-hidden border-white/10">
+                    <ThreePersonalInfoAnimation />
+                    <CardContent className="relative p-0 h-full z-10">
                         <div className="space-y-8 flex flex-col items-start justify-center h-full">
                             <h5 className="text-xl font-bold">Personal Info</h5>
                             <div className="space-y-6">

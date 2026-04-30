@@ -17,7 +17,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
+        body: ['Outfit', 'sans-serif'],
         headline: ['Outfit', 'sans-serif'],
       },
       colors: {

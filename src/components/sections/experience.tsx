@@ -1,141 +1,169 @@
 "use client";
 
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
+import { BriefcaseBusiness, Calendar, ChevronLeft, ChevronRight, Wallet } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectCoverflow, Navigation, Pagination } from "swiper/modules";
 import { PROFESSIONAL_EXPERIENCE } from "@/lib/data";
-import { Briefcase, Calendar } from "lucide-react";
-import Link from "next/link";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { useRef } from 'react';
 import { cn } from "@/lib/utils";
+import { TypingAnimation } from "../ui/typing-animation";
+
+// Swiper styles
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const ExperienceHeader = ({ subtitle, title }: { subtitle: string, title: string }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
-
   return (
-    <div
-      ref={ref}
-      className={cn("experience-header flex items-start gap-8", isInView && "is-in-view")}
-    >
-      <div className="relative h-24 w-px bg-border experience-header-line"></div>
-      <div>
-        <p className="text-muted-foreground font-semibold whitespace-nowrap mb-2">{subtitle}</p>
-        <h2 className="font-bold tracking-tighter text-4xl md:text-5xl">{title}</h2>
-      </div>
+    <div className="flex flex-col items-center text-center mb-12">
+      <div className="relative h-16 w-px bg-accent/30 mb-4"></div>
+      <p className="text-accent font-semibold uppercase tracking-wider text-sm mb-2">{subtitle}</p>
+      <h2 className="font-bold tracking-tighter text-4xl md:text-6xl text-white">{title}</h2>
     </div>
   );
 };
 
-
 const Experience = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end end"],
-  });
+  const swiperStyles = `
+    .experience-swiper {
+      width: 100%;
+      padding-top: 50px;
+      padding-bottom: 80px !important;
+    }
+    
+    .experience-swiper .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 320px;
+      height: auto;
+      opacity: 0.4;
+      transition: opacity 0.3s;
+    }
 
-  const timelineGlowHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+    .experience-swiper .swiper-slide-active {
+      opacity: 1;
+    }
 
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
+    .experience-swiper .swiper-pagination-bullet {
+      background: #C9F31D !important;
+      opacity: 0.3;
+    }
 
-  const itemVariants = (isLeft: boolean) => ({
-    hidden: { opacity: 0, x: isLeft ? -100 : 100 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        type: "spring",
-        stiffness: 50,
-      },
-    },
-  });
+    .experience-swiper .swiper-pagination-bullet-active {
+      opacity: 1;
+      width: 20px;
+      border-radius: 4px;
+    }
+  `;
 
   return (
-    <section id="experience" className="py-16 md:py-24 overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto mb-16">
-          <ExperienceHeader
-            subtitle="Teams I Worked With"
-            title="My Professional Experiences"
-          />
-        </div>
+    <section id="experience" className="py-24 relative overflow-hidden">
+      <style>{swiperStyles}</style>
+      
+      {/* Background Decorative Elements */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none -z-10">
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <ExperienceHeader
+          subtitle="Teams I Worked With"
+          title="My Professional Experiences"
+        />
 
         <motion.div
-          ref={containerRef}
-          className="relative max-w-4xl mx-auto"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={containerVariants}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="w-full max-w-6xl mx-auto mt-10 relative"
         >
-          {/* Central Timeline */}
-          <div className="absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2"></div>
-          
-          {/* Glowing gradient for the line */}
-           <motion.div 
-              className="absolute left-1/2 top-0 w-16 -translate-x-1/2 bg-gradient-to-b from-accent/0 via-accent/40 to-accent"
-              style={{ height: timelineGlowHeight, filter: 'blur(12px)' }}
-           />
+          <Swiper
+            effect={"coverflow"}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={"auto"}
+            loop={true}
+            coverflowEffect={{
+              rotate: 30,
+              stretch: 0,
+              depth: 150,
+              modifier: 1,
+              slideShadows: false,
+            }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+              dynamicBullets: true,
+            }}
+            navigation={{
+              nextEl: ".exp-next",
+              prevEl: ".exp-prev",
+            }}
+            modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+            className="experience-swiper"
+          >
+            {PROFESSIONAL_EXPERIENCE.map((job, index) => (
+              <SwiperSlide key={index}>
+                <div className="flex flex-col gap-6">
+                  {/* Outside: Period & Job Type */}
+                  <div className="flex flex-col items-center gap-1 text-center mb-2">
+                    <TypingAnimation className="text-accent font-bold text-lg tracking-tight">
+                      {job.period}
+                    </TypingAnimation>
+                    <span className="text-xs uppercase tracking-[0.2em] text-white/40">{job.jobType}</span>
+                  </div>
 
+                  {/* The Card */}
+                  <div className="relative group">
+                    <div className="absolute -inset-0.5 bg-accent/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500" />
+                    
+                    <div className="relative p-8 rounded-2xl border border-white/10 bg-black shadow-2xl transition-all duration-300 group-hover:border-accent/40 h-full flex flex-col min-h-[350px]">
+                      <div className="flex items-center justify-start text-accent mb-6">
+                        <Wallet className="w-7 h-7" strokeWidth={1.2} />
+                      </div>
 
-          {PROFESSIONAL_EXPERIENCE.map((job, index) => {
-            const isLeft = index % 2 === 0;
-            return (
-              <motion.div
-                key={index}
-                className="mb-8 flex justify-between items-center w-full"
-                variants={itemVariants(isLeft)}
-              >
-                {/* Left Side */}
-                <div
-                  className={`w-5/12 ${isLeft ? "order-1" : "order-3"}`}
-                >
-                  <Link
-                    href={job.url || "#"}
-                    target="_blank"
-                    rel="noopener"
-                    className="block p-6 rounded-xl border border-white/10 bg-card/80 backdrop-blur-sm shadow-lg hover:border-accent transition-all duration-300 hover:shadow-accent/20"
-                  >
-                    <div className="flex items-start gap-4 mb-3">
-                       <div className="flex-shrink-0 bg-gray-800 p-3 rounded-full mt-1">
-                          {job.icon ? (
-                            <job.icon className="w-5 h-5 text-accent" />
-                          ) : (
-                            <Briefcase className="w-5 h-5 text-accent" />
-                          )}
-                        </div>
-                       <div>
-                        <h3 className="font-bold text-lg">{job.role}</h3>
-                         <p className="text-sm text-muted-foreground">
-                          {job.company} • {job.jobType}
-                        </p>
+                      <h3 className="text-2xl font-bold text-white mb-2 leading-tight group-hover:text-accent transition-colors">
+                        {job.role}
+                      </h3>
+                      
+                      <div className="text-accent/80 font-medium mb-6 text-sm">
+                        {job.company}
+                      </div>
+
+                      <div className="space-y-3 flex-grow">
+                        {job.description?.slice(0, 3).map((desc, i) => (
+                          <div key={i} className="flex gap-3 text-sm text-white/60 leading-relaxed">
+                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent/40 shrink-0" />
+                            <p className="line-clamp-3">{desc}</p>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between text-xs font-semibold text-accent uppercase tracking-wider">
+                        <span>Details</span>
+                        <ChevronRight className="w-4 h-4" />
                       </div>
                     </div>
-                    <div className="flex items-center text-sm text-muted-foreground mt-4">
-                      <Calendar className="w-4 h-4 mr-2" />
-                      <span>{job.period}</span>
-                    </div>
-                  </Link>
+                  </div>
                 </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-                {/* Center Dot */}
-                <div
-                  className={`z-10 flex items-center order-2 bg-background`}
-                >
-                  <div className="w-4 h-4 rounded-full bg-accent shadow-[0_0_12px] shadow-accent"></div>
-                </div>
-
-                {/* Right/Empty Side */}
-                <div className="w-5/12 order-2"></div>
-              </motion.div>
-            );
-          })}
+          {/* Navigation Buttons */}
+          <div className="flex justify-center gap-4 mt-8">
+            <button className="exp-prev w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-accent hover:text-black transition-all duration-300">
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button className="exp-next w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-accent hover:text-black transition-all duration-300">
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
         </motion.div>
       </div>
     </section>
